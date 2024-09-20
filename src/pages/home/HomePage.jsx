@@ -1,6 +1,7 @@
 import React from 'react';
 import bg_home from '../../../public/assets/images/climate.jpg';
 import Menu from './_partials/Menu';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const menus = [
@@ -8,36 +9,41 @@ const HomePage = () => {
       id: 1,
       image: '/public/assets/images/gempa.png',
       title: 'Informasi Gempa',
-      href: '',
+      href: '/informasi-gempa',
     },
     {
-      id: 1,
+      id: 2,
       image: '/public/assets/images/cuaca.png',
       title: 'Informasi Cuaca',
-      href: '',
+      href: '/',
     },
   ];
   return (
     <>
-      <div className="w-full h-screen relative flex items-center justify-center p-4">
+      <div className="relative flex items-center justify-center w-full h-screen p-4">
         <img
           src={bg_home}
           alt="Bg home"
-          className="object-cover w-full h-full absolute"
+          className="absolute object-cover w-full h-full"
         />
         <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
         <div className="absolute text-center">
-          <span className="text-2xl md:text-4xl font-bold text-white my-10">
+          <span className="my-10 text-2xl font-bold text-white md:text-4xl">
             Informasi Gempa dan Cuaca
           </span>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-3 w-full my-10 ">
+          <div className="flex flex-col items-center justify-center w-full gap-3 my-10 md:flex-row ">
             {menus.map((menu) => (
-              <Menu
+              <Link
                 key={menu.id}
-                image={menu.image}
-                title={menu.title}
-              />
+                to={menu.href}
+                className="w-full"
+              >
+                <Menu
+                  image={menu.image}
+                  title={menu.title}
+                />
+              </Link>
             ))}
           </div>
         </div>
