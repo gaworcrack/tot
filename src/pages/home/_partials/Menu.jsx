@@ -1,18 +1,21 @@
-import { Card } from '@material-tailwind/react';
+import { Button, Card } from '@material-tailwind/react';
 import React from 'react';
 
 const Menu = ({ image, title }) => {
   return (
     <>
       <div className="flex items-center justify-center w-full">
-        <Card className="p-2 flex items-center justify-center flex-col w-full text-black font-bold text-lg">
+        <Button
+          className="flex flex-col items-center justify-center w-full p-2 text-lg font-bold text-black capitalize capi"
+          color="white"
+        >
           <img
             src={image}
             alt="Image gempa"
-            className="w-20"
+            className="w-20 mb-3"
           />
           {title}
-        </Card>
+        </Button>
       </div>
     </>
   );

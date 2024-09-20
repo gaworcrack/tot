@@ -1,6 +1,7 @@
 import React from 'react';
 import HomePage from './pages/home/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import GempaUpdate from './pages/informasi-gempa/gempa-update/GempaUpdate';
 
 const App = () => {
   return (
@@ -10,6 +11,10 @@ const App = () => {
           <Route
             path="/"
             element={<HomePage />}
+          />
+          <Route
+            path="/informasi-gempa"
+            element={<GempaUpdate />}
           />
         </Routes>
       </BrowserRouter>
