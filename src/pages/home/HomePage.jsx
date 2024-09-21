@@ -46,6 +46,10 @@ const HomePage = () => {
               </Link>
             ))}
           </div>
+
+          <div className="text-lg font-medium text-white">
+            Data bersumber dari BMKG
+          </div>
         </div>
       </div>
     </>

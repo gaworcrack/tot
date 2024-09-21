@@ -1,6 +1,12 @@
 import { Badge, Card } from '@material-tailwind/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { FaDeezer, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa';
+import { IoLocationOutline } from 'react-icons/io5';
+import { PiMapPinAreaBold } from 'react-icons/pi';
+import { RiEarthquakeLine } from 'react-icons/ri';
+import { WiEarthquake } from 'react-icons/wi';
+import GempaDirasakan from './_partials/GempaDirasakan';
 
 const GempaUpdate = () => {
   const baseURL = 'https://data.bmkg.go.id/DataMKG/TEWS/';
@@ -12,17 +18,17 @@ const GempaUpdate = () => {
           'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json'
         );
         setGempaTerkini(response.data.Infogempa.gempa);
-        console.log(response.data.Infogempa.gempa);
       } catch (errors) {
         console.errors('Error fetch data:', errors);
       }
     };
     fetchGempa();
   }, []);
+
   return (
     <>
       <div className="w-full p-2 ">
-        <Card className="w-full p-5 text-center text-white bg-[#3B3030]">
+        <Card className="w-full p-5 text-center text-white bg-red-700">
           <h1 className="text-3xl font-bold">Informasi Gempa</h1>
         </Card>
 
@@ -34,31 +40,66 @@ const GempaUpdate = () => {
               </h1>
               <div className="flex items-center justify-center">
                 <span className="bg-red-500 rounded-full size-3"></span>
-                <span className="absolute bg-red-500 rounded-full size-4 animate-ping"></span>
+                <span className="absolute bg-red-500 rounded-full size-5 animate-ping"></span>
               </div>
             </div>
 
             <div className="my-5 text-black">
               <div className="flex flex-col">
-                <span className="text-base font-medium">Tanggal</span>
+                <span className="flex items-center gap-2 text-base font-medium ">
+                  <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <FaRegCalendarAlt />
+                  </span>
+                  Tanggal
+                </span>
                 <span className="text-lg font-bold">
                   {gempaTerkini.Tanggal}
                 </span>
                 <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Jam</span>
+                <span className="flex items-center gap-2 text-base font-medium">
+                  <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <FaRegClock />
+                  </span>{' '}
+                  Jam
+                </span>
                 <span className="text-lg font-bold">{gempaTerkini.Jam}</span>
                 <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Magnitude</span>
+                <span className="flex items-center gap-2 text-base font-medium">
+                  <span className="p-1.5 text-white bg-red-700 rounded-lg">
+                    <WiEarthquake size={20} />
+                  </span>{' '}
+                  Magnitude
+                </span>
                 <span className="text-lg font-bold">
                   {gempaTerkini.Magnitude} SR
                 </span>
                 <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Kedalaman</span>
+                <span className="flex items-center gap-2 text-base font-medium">
+                  <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <FaDeezer />
+                  </span>{' '}
+                  Kedalaman
+                </span>
                 <span className="text-lg font-bold">
                   {gempaTerkini.Kedalaman}
                 </span>
                 <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Koordinat</span>
+                <span className="flex items-center gap-2 text-base font-medium">
+                  <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <IoLocationOutline />
+                  </span>{' '}
+                  Wilayah
+                </span>
+                <span className="text-lg font-bold">
+                  {gempaTerkini.Wilayah}
+                </span>
+                <hr className="my-2 border border-gray-400" />
+                <span className="flex items-center gap-2 text-base font-medium">
+                  <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <PiMapPinAreaBold />
+                  </span>{' '}
+                  Koordinat
+                </span>
                 <span className="text-lg font-bold">
                   {gempaTerkini.Coordinates}
                 </span>
@@ -71,17 +112,18 @@ const GempaUpdate = () => {
                 <span className="text-base font-medium">Bujur</span>
                 <span className="text-lg font-bold">{gempaTerkini.Bujur}</span>
                 <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Wilayah</span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Wilayah}
-                </span>
-                <hr className="my-2 border border-gray-400" />
+
                 <span className="text-base font-medium">Potensi</span>
                 <span className="text-lg font-bold">
                   {gempaTerkini.Potensi}
                 </span>
                 <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Dirasakan</span>
+                <span className="flex items-center gap-2 text-base font-medium">
+                  <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <RiEarthquakeLine />
+                  </span>{' '}
+                  Dirasakan
+                </span>
                 <span className="text-lg font-bold">
                   {gempaTerkini.Dirasakan}
                 </span>
@@ -98,17 +140,7 @@ const GempaUpdate = () => {
           </Card>
 
           <Card className="p-5">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-            quaerat, dolor, odio modi ea deserunt molestiae nostrum, voluptatem
-            repellendus recusandae suscipit consectetur sapiente. Quaerat, eaque
-            corporis iusto architecto quisquam deleniti?
-          </Card>
-
-          <Card className="p-5">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab
-            quaerat, dolor, odio modi ea deserunt molestiae nostrum, voluptatem
-            repellendus recusandae suscipit consectetur sapiente. Quaerat, eaque
-            corporis iusto architecto quisquam deleniti?
+            <GempaDirasakan />
           </Card>
         </div>
       </div>
