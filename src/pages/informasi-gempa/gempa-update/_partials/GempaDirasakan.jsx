@@ -51,9 +51,9 @@ const GempaDirasakan = () => {
                 <tr className="border-b border-gray-500 text-start">
                   <td className="p-3">{gempa.Tanggal}</td>
                   <td className="p-3">{gempa.Jam}</td>
-                  <td className="p-3">{gempa.Magnitude}</td>
+                  <td className="p-3 text-center">{gempa.Magnitude}</td>
                   <td className="p-3">{gempa.Wilayah}</td>
-                  <td className="p-3">{gempa.Kedalaman}</td>
+                  <td className="p-3 text-center">{gempa.Kedalaman}</td>
                   <td className="p-3">{gempa.Coordinates}</td>
                   <td className="p-3">{gempa.Dirasakan}</td>
                 </tr>
