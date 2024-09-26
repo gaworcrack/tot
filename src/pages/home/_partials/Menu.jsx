@@ -6,7 +6,7 @@ const Menu = ({ image, title }) => {
     <>
       <div className="flex items-center justify-center w-full">
         <Button
-          className="flex flex-col items-center justify-center w-full p-2 text-lg font-bold text-black capitalize capi"
+          className="flex flex-col items-center justify-center w-full p-2 text-lg font-bold text-black capitalize"
           color="white"
         >
           <img
