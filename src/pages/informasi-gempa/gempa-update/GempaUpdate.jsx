@@ -10,7 +10,8 @@ import GempaDirasakan from './_partials/GempaDirasakan';
 
 const GempaUpdate = () => {
   const baseURL = 'https://data.bmkg.go.id/DataMKG/TEWS/';
-  const [gempaTerkini, setGempaTerkini] = useState('');
+  const [gempaTerkini, setGempaTerkini] = useState(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchGempa = async () => {
       try {
@@ -18,8 +19,12 @@ const GempaUpdate = () => {
           'https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json'
         );
         setGempaTerkini(response.data.Infogempa.gempa);
+        console.log(response.data.Infogempa.gempa);
+        setLoading(false);
       } catch (errors) {
-        console.errors('Error fetch data:', errors);
+        console.error('Error fetch data:', errors);
+        console.error('Error fetching data:', errors.response);
+        setLoading(false);
       }
     };
     fetchGempa();
@@ -45,97 +50,109 @@ const GempaUpdate = () => {
             </div>
 
             <div className="my-5 text-black">
-              <div className="flex flex-col">
-                <span className="flex items-center gap-2 text-base font-medium ">
-                  <span className="p-2 text-white bg-red-700 rounded-lg">
-                    <FaRegCalendarAlt />
+              {loading ? (
+                <div className="text-center">
+                  <p>Loading data gempa...</p>
+                </div>
+              ) : gempaTerkini ? (
+                <div className="flex flex-col">
+                  <span className="flex items-center gap-2 text-base font-medium ">
+                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                      <FaRegCalendarAlt />
+                    </span>
+                    Tanggal
                   </span>
-                  Tanggal
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Tanggal}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-red-700 rounded-lg">
-                    <FaRegClock />
-                  </span>{' '}
-                  Jam
-                </span>
-                <span className="text-lg font-bold">{gempaTerkini.Jam}</span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-1.5 text-white bg-red-700 rounded-lg">
-                    <WiEarthquake size={20} />
-                  </span>{' '}
-                  Magnitude
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Magnitude} SR
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-red-700 rounded-lg">
-                    <FaDeezer />
-                  </span>{' '}
-                  Kedalaman
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Kedalaman}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-red-700 rounded-lg">
-                    <IoLocationOutline />
-                  </span>{' '}
-                  Wilayah
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Wilayah}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-red-700 rounded-lg">
-                    <PiMapPinAreaBold />
-                  </span>{' '}
-                  Koordinat
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Coordinates}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Lintang</span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Lintang}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Bujur</span>
-                <span className="text-lg font-bold">{gempaTerkini.Bujur}</span>
-                <hr className="my-2 border border-gray-400" />
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Tanggal}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="flex items-center gap-2 text-base font-medium">
+                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                      <FaRegClock />
+                    </span>{' '}
+                    Jam
+                  </span>
+                  <span className="text-lg font-bold">{gempaTerkini.Jam}</span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="flex items-center gap-2 text-base font-medium">
+                    <span className="p-1.5 text-white bg-red-700 rounded-lg">
+                      <WiEarthquake size={20} />
+                    </span>{' '}
+                    Magnitude
+                  </span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Magnitude} SR
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="flex items-center gap-2 text-base font-medium">
+                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                      <FaDeezer />
+                    </span>{' '}
+                    Kedalaman
+                  </span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Kedalaman}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="flex items-center gap-2 text-base font-medium">
+                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                      <IoLocationOutline />
+                    </span>{' '}
+                    Wilayah
+                  </span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Wilayah}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="flex items-center gap-2 text-base font-medium">
+                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                      <PiMapPinAreaBold />
+                    </span>{' '}
+                    Koordinat
+                  </span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Coordinates}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="text-base font-medium">Lintang</span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Lintang}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="text-base font-medium">Bujur</span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Bujur}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
 
-                <span className="text-base font-medium">Potensi</span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Potensi}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-red-700 rounded-lg">
-                    <RiEarthquakeLine />
-                  </span>{' '}
-                  Dirasakan
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Dirasakan}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="text-lg font-bold">
-                  <img
-                    src={`${baseURL}/${gempaTerkini.Shakemap}`}
-                    alt="Posisi Gempa"
-                  />
-                </span>
-                <hr className="my-2 border border-gray-400" />
-              </div>
+                  <span className="text-base font-medium">Potensi</span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Potensi}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="flex items-center gap-2 text-base font-medium">
+                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                      <RiEarthquakeLine />
+                    </span>{' '}
+                    Dirasakan
+                  </span>
+                  <span className="text-lg font-bold">
+                    {gempaTerkini.Dirasakan}
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                  <span className="text-lg font-bold">
+                    <img
+                      src={`${baseURL}/${gempaTerkini.Shakemap}`}
+                      alt="Posisi Gempa"
+                    />
+                  </span>
+                  <hr className="my-2 border border-gray-400" />
+                </div>
+              ) : (
+                <div className="text-center text-red-500">
+                  <p>Data gempa tidak tersedia.</p>
+                </div>
+              )}
             </div>
           </Card>
 

@@ -15,7 +15,7 @@ const HomePage = () => {
       id: 2,
       image: '/public/assets/images/cuaca.png',
       title: 'Informasi Cuaca',
-      href: '/',
+      href: '/informasi-cuaca',
     },
   ];
   return (
