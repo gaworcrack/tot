@@ -10,6 +10,8 @@ const GempaDirasakan = () => {
     'Wilayah',
     'Kedalaman',
     'Koordinat',
+    'Lintang',
+    'Bujur',
     'Dirasakan',
   ];
 
@@ -40,7 +42,7 @@ const GempaDirasakan = () => {
                 {TABLE_HEAD.map((head) => (
                   <th
                     key={head}
-                    className="p-4 text-white bg-green-800 border border-b"
+                    className="p-4 text-center text-white bg-green-800 border border-b"
                   >
                     {head}
                   </th>
@@ -76,6 +78,12 @@ const GempaDirasakan = () => {
                     </td>
                     <td className="p-3 text-black border border-gray-300">
                       {gempa.Coordinates}
+                    </td>
+                    <td className="p-3 text-black border border-gray-300">
+                      {gempa.Lintang}
+                    </td>
+                    <td className="p-3 text-black border border-gray-300">
+                      {gempa.Bujur}
                     </td>
                     <td className="p-3 text-black border border-gray-300">
                       {gempa.Dirasakan.split(',').map((area, index) => (
