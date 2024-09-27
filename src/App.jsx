@@ -1,8 +1,8 @@
 import React from 'react';
 import HomePage from './pages/home/HomePage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import GempaUpdate from './pages/informasi-gempa/gempa-update/GempaUpdate';
 import InformasiCuaca from './pages/informasi-cuaca/InformasiCuaca';
+import InformasiGempa from './pages/informasi-gempa/InformasiGempa';
 
 const App = () => {
   return (
@@ -15,7 +15,7 @@ const App = () => {
           />
           <Route
             path="/informasi-gempa"
-            element={<GempaUpdate />}
+            element={<InformasiGempa />}
           />
           <Route
             path="/informasi-cuaca"
