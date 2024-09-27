@@ -33,7 +33,7 @@ const GempaUpdate = () => {
   return (
     <>
       <div className="w-full p-2 ">
-        <Card className="w-full p-5 text-center text-white bg-red-700">
+        <Card className="w-full py-10 text-center text-white bg-[url('/assets/images/gempa-wp.jpg')] object-cover bg-green-500 bg-blend-overlay">
           <h1 className="text-3xl font-bold">Informasi Gempa</h1>
         </Card>
 
@@ -57,7 +57,7 @@ const GempaUpdate = () => {
               ) : gempaTerkini ? (
                 <div className="flex flex-col">
                   <span className="flex items-center gap-2 text-base font-medium ">
-                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <span className="p-2 text-white bg-green-800 rounded-lg">
                       <FaRegCalendarAlt />
                     </span>
                     Tanggal
@@ -67,7 +67,7 @@ const GempaUpdate = () => {
                   </span>
                   <hr className="my-2 border border-gray-400" />
                   <span className="flex items-center gap-2 text-base font-medium">
-                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <span className="p-2 text-white bg-green-800 rounded-lg">
                       <FaRegClock />
                     </span>{' '}
                     Jam
@@ -75,7 +75,7 @@ const GempaUpdate = () => {
                   <span className="text-lg font-bold">{gempaTerkini.Jam}</span>
                   <hr className="my-2 border border-gray-400" />
                   <span className="flex items-center gap-2 text-base font-medium">
-                    <span className="p-1.5 text-white bg-red-700 rounded-lg">
+                    <span className="p-1.5 text-white bg-green-800 rounded-lg">
                       <WiEarthquake size={20} />
                     </span>{' '}
                     Magnitude
@@ -85,7 +85,7 @@ const GempaUpdate = () => {
                   </span>
                   <hr className="my-2 border border-gray-400" />
                   <span className="flex items-center gap-2 text-base font-medium">
-                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <span className="p-2 text-white bg-green-800 rounded-lg">
                       <FaDeezer />
                     </span>{' '}
                     Kedalaman
@@ -95,7 +95,7 @@ const GempaUpdate = () => {
                   </span>
                   <hr className="my-2 border border-gray-400" />
                   <span className="flex items-center gap-2 text-base font-medium">
-                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <span className="p-2 text-white bg-green-800 rounded-lg">
                       <IoLocationOutline />
                     </span>{' '}
                     Wilayah
@@ -105,7 +105,7 @@ const GempaUpdate = () => {
                   </span>
                   <hr className="my-2 border border-gray-400" />
                   <span className="flex items-center gap-2 text-base font-medium">
-                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <span className="p-2 text-white bg-green-800 rounded-lg">
                       <PiMapPinAreaBold />
                     </span>{' '}
                     Koordinat
@@ -131,7 +131,7 @@ const GempaUpdate = () => {
                   </span>
                   <hr className="my-2 border border-gray-400" />
                   <span className="flex items-center gap-2 text-base font-medium">
-                    <span className="p-2 text-white bg-red-700 rounded-lg">
+                    <span className="p-2 text-white bg-green-800 rounded-lg">
                       <RiEarthquakeLine />
                     </span>{' '}
                     Dirasakan
@@ -144,6 +144,7 @@ const GempaUpdate = () => {
                     <img
                       src={`${baseURL}/${gempaTerkini.Shakemap}`}
                       alt="Posisi Gempa"
+                      // className="size-[500px]"
                     />
                   </span>
                   <hr className="my-2 border border-gray-400" />
@@ -157,7 +158,7 @@ const GempaUpdate = () => {
           </Card>
 
           <Card className="p-5">
-            <GempaDirasakan />
+            <GempaDirasakan className="overflow-x-auto" />
           </Card>
         </div>
       </div>
