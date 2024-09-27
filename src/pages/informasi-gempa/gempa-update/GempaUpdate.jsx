@@ -33,7 +33,7 @@ const GempaUpdate = () => {
   return (
     <>
       <div className="w-full p-2 ">
-        <Card className="w-full py-10 text-center text-white bg-[url('/assets/images/gempa-wp.jpg')] object-cover bg-green-500 bg-blend-overlay">
+        <Card className="w-full py-10 text-center text-white bg-[url('/assets/images/gempa-wp.jpg')] object-cover bg-green-800 bg-blend-overlay">
           <h1 className="text-3xl font-bold">Informasi Gempa</h1>
         </Card>
 
