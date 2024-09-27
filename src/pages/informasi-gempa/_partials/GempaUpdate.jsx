@@ -6,6 +6,7 @@ import { IoLocationOutline } from 'react-icons/io5';
 import { PiMapPinAreaBold } from 'react-icons/pi';
 import { RiEarthquakeLine } from 'react-icons/ri';
 import { WiEarthquake } from 'react-icons/wi';
+import dataSigBmkg from './dataSigBmkg';
 
 const GempaUpdate = () => {
   const baseURL = 'https://data.bmkg.go.id/DataMKG/TEWS/';
@@ -29,6 +30,15 @@ const GempaUpdate = () => {
     fetchGempa();
   }, []);
 
+  const SIG_HEAD = [
+    'Skala SIG BMKG',
+    'Warna',
+    'Deskripsi Sederhana',
+    'Deskripsi Rinci',
+    'Skala MMI',
+    'PGA (gal)',
+  ];
+
   return (
     <>
       <div className="w-full">
@@ -49,104 +59,163 @@ const GempaUpdate = () => {
                 <p>Loading data gempa...</p>
               </div>
             ) : gempaTerkini ? (
-              <div className="flex flex-col">
-                <span className="flex items-center gap-2 text-base font-medium ">
-                  <span className="p-2 text-white bg-green-800 rounded-lg">
-                    <FaRegCalendarAlt />
+              <div className="grid grid-cols-12 gap-5 ">
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md ">
+                    Tanggal
+                  </Card>
+                  <span className="mt-5 text-lg font-bold text-black">
+                    {gempaTerkini.Tanggal}
                   </span>
-                  Tanggal
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Tanggal}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-green-800 rounded-lg">
-                    <FaRegClock />
-                  </span>{' '}
-                  Jam
-                </span>
-                <span className="text-lg font-bold">{gempaTerkini.Jam}</span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-1.5 text-white bg-green-800 rounded-lg">
-                    <WiEarthquake size={20} />
-                  </span>{' '}
-                  Magnitude
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Magnitude} SR
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-green-800 rounded-lg">
-                    <FaDeezer />
-                  </span>{' '}
-                  Kedalaman
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Kedalaman}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-green-800 rounded-lg">
-                    <IoLocationOutline />
-                  </span>{' '}
-                  Wilayah
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Wilayah}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-green-800 rounded-lg">
-                    <PiMapPinAreaBold />
-                  </span>{' '}
-                  Koordinat
-                </span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Coordinates}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Lintang</span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Lintang}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="text-base font-medium">Bujur</span>
-                <span className="text-lg font-bold">{gempaTerkini.Bujur}</span>
-                <hr className="my-2 border border-gray-400" />
+                </Card>
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Jam
+                  </Card>
+                  <span className="mt-5 text-lg font-bold text-black">
+                    {gempaTerkini.Jam}
+                  </span>
+                </Card>
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Magnitude
+                  </Card>
+                  <span className="mt-5 text-lg font-bold text-black">
+                    {gempaTerkini.Magnitude} SR
+                  </span>
+                </Card>
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Kedalaman
+                  </Card>
+                  <span className="mt-5 text-lg font-bold text-black">
+                    {gempaTerkini.Kedalaman}
+                  </span>
+                </Card>
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Wilayah
+                  </Card>
+                  <span className="mt-2 text-base font-semibold text-black ">
+                    {gempaTerkini.Wilayah}
+                  </span>
+                </Card>
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Koordinat
+                  </Card>
+                  <span className="mt-5 text-lg font-bold text-black">
+                    {gempaTerkini.Coordinates}
+                  </span>
+                </Card>
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Lintang
+                  </Card>
+                  <span className="mt-5 text-lg font-bold text-black">
+                    {gempaTerkini.Lintang}
+                  </span>
+                </Card>
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Bujur
+                  </Card>
+                  <span className="mt-5 text-lg font-bold text-black">
+                    {gempaTerkini.Bujur}
+                  </span>
+                </Card>
 
-                <span className="text-base font-medium">Potensi</span>
-                <span className="text-lg font-bold">
-                  {gempaTerkini.Potensi}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="flex items-center gap-2 text-base font-medium">
-                  <span className="p-2 text-white bg-green-800 rounded-lg">
-                    <RiEarthquakeLine />
-                  </span>{' '}
-                  Dirasakan
-                </span>
-                <span className="">
-                  {gempaTerkini.Dirasakan.split(',').map((area, index) => (
-                    <span
-                      key={index}
-                      className="p-2 text-sm text-white bg-orange-500 rounded-md"
-                    >
-                      {area.trim()}
-                    </span>
-                  ))}
-                </span>
-                <hr className="my-2 border border-gray-400" />
-                <span className="text-lg font-bold">
+                <Card className="flex items-center justify-center col-span-3 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Potensi
+                  </Card>
+                  <span className="mt-2 text-base font-semibold text-justify text-black">
+                    {gempaTerkini.Potensi}
+                  </span>
+                </Card>
+                <Card className="flex items-center justify-center col-span-9 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Dirasakan
+                  </Card>
+                  <span className="mt-5">
+                    {gempaTerkini.Dirasakan.split(',').map((area, index) => (
+                      <span
+                        key={index}
+                        className="p-2 text-sm text-white bg-orange-600 rounded-md"
+                      >
+                        {area.trim()}
+                      </span>
+                    ))}
+                  </span>
+                </Card>
+
+                <Card className="flex items-center justify-center col-span-6 p-2 border bg-blue-gray-50">
+                  <Card className="w-full p-1 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Shakemap
+                  </Card>
+                  <img
+                    src={`${baseURL}/${gempaTerkini.Shakemap}`}
+                    alt="Posisi Gempa"
+                    className="my-2 "
+                  />
+                </Card>
+                <Card className="col-span-6 p-2 border h-fit bg-blue-gray-50">
+                  <Card className="w-full p-1 mb-3 text-base font-medium text-center text-white bg-green-800 rounded-md">
+                    Skala Intensitas Gempabumi (SIG) BMKG
+                  </Card>
+                  <div className="w-full overflow-x-auto border border-gray-300 rounded-lg scrollbar-hide">
+                    <table className="w-full overflow-hidden text-left border rounded-lg table-auto min-w-max">
+                      <thead>
+                        <tr>
+                          {SIG_HEAD.map((head) => (
+                            <th
+                              key={head}
+                              className="p-4 text-center text-white bg-blue-500 border border-b"
+                            >
+                              {head}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {dataSigBmkg.map((sig, index) => (
+                          <tr
+                            key={index}
+                            className="text-sm border-b border-gray-500 text-start"
+                            style={{ backgroundColor: sig.hexa }}
+                          >
+                            <td className="p-3 text-center text-black border border-gray-300">
+                              {sig.skala}
+                            </td>
+                            <td className="p-3 text-black border border-gray-300">
+                              {sig.warna}
+                            </td>
+                            <td className="p-3 text-black border border-gray-300">
+                              {sig.deskripsiSederhana}
+                            </td>
+                            <td className="p-3 text-black border border-gray-300">
+                              {sig.deskripsiRinci}
+                            </td>
+                            <td className="p-3 text-black border border-gray-300">
+                              {sig.skalaMmi}
+                            </td>
+                            <td className="p-3 text-center text-black border border-gray-300">
+                              {sig.pga}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </Card>
+
+                {/* <span className="flex justify-center col-span-6 text-lg font-bold">
                   <img
                     src={`${baseURL}/${gempaTerkini.Shakemap}`}
                     alt="Posisi Gempa"
                     // className="size-[500px]"
                   />
-                </span>
-                <hr className="my-2 border border-gray-400" />
+                </span> */}
               </div>
             ) : (
               <div className="text-center text-red-500">
