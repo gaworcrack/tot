@@ -1,4 +1,3 @@
-import { Card } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import axios from 'axios';

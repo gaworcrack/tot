@@ -1,12 +1,8 @@
 import { Card } from '@material-tailwind/react';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { FaDeezer, FaRegCalendarAlt, FaRegClock } from 'react-icons/fa';
-import { IoLocationOutline } from 'react-icons/io5';
-import { PiMapPinAreaBold } from 'react-icons/pi';
-import { RiEarthquakeLine } from 'react-icons/ri';
-import { WiEarthquake } from 'react-icons/wi';
 import dataSigBmkg from './dataSigBmkg';
+import { Link } from 'react-router-dom';
 
 const GempaUpdate = () => {
   const baseURL = 'https://data.bmkg.go.id/DataMKG/TEWS/';
@@ -207,6 +203,17 @@ const GempaUpdate = () => {
                       </tbody>
                     </table>
                   </div>
+                  <span className="my-5 text-black">
+                    Sumber :{' '}
+                    <Link
+                      to={
+                        'https://www.bmkg.go.id/gempabumi/skala-intensitas-gempabumi.bmkg'
+                      }
+                      className="text-blue-600"
+                    >
+                      https://www.bmkg.go.id/gempabumi/skala-intensitas-gempabumi.bmkg
+                    </Link>
+                  </span>
                 </Card>
 
                 {/* <span className="flex justify-center col-span-6 text-lg font-bold">
