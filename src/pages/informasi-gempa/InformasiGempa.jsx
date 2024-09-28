@@ -17,30 +17,24 @@ const InformasiGempa = () => {
           <div className="flex items-center justify-between mb-4">
             <div className="flex p-2">
               <button
-                className={`py-2 px-4 font-semibold ${
-                  activeTab === 1
-                    ? 'border-b-4 border-green-800 text-green-800'
-                    : 'text-gray-500'
+                className={`py-2 px-4 font-semibold border-b border-green-800 rounded-t-lg ${
+                  activeTab === 1 ? 'text-white bg-green-800' : 'text-gray-500'
                 }`}
                 onClick={() => setActiveTab(1)}
               >
                 Gempa Update
               </button>
               <button
-                className={`py-2 px-4 font-semibold ${
-                  activeTab === 2
-                    ? 'border-b-4 border-green-800 text-green-800'
-                    : 'text-gray-500'
+                className={`py-2 px-4 font-semibold  border-b border-green-800 rounded-t-lg ${
+                  activeTab === 2 ? 'text-white bg-green-800' : 'text-gray-500'
                 }`}
                 onClick={() => setActiveTab(2)}
               >
                 Gempa Dirasakan
               </button>
               <button
-                className={`py-2 px-4 font-semibold ${
-                  activeTab === 3
-                    ? 'border-b-4 border-green-800 text-green-800'
-                    : 'text-gray-500'
+                className={`py-2 px-4 font-semibold border-b border-green-800 rounded-t-lg ${
+                  activeTab === 3 ? ' text-white bg-green-800' : 'text-gray-500'
                 }`}
                 onClick={() => setActiveTab(3)}
               >
