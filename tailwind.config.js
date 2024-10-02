@@ -7,7 +7,11 @@ module.exports = withMT({
     './node_modules/@tremor/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        inter: ['Inter, sans-serif'],
+      },
+    },
   },
   plugins: [],
 });
