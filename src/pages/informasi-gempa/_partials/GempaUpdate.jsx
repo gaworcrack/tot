@@ -137,7 +137,7 @@ const GempaUpdate = () => {
                     {gempaTerkini.Dirasakan.split(',').map((area, index) => (
                       <span
                         key={index}
-                        className="p-2 text-sm text-white bg-orange-600 rounded-md"
+                        className="p-2 ml-2 text-sm text-white bg-orange-600 rounded-md"
                       >
                         {area.trim()}
                       </span>

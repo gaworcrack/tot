@@ -38,7 +38,7 @@ const GempaTerkini = () => {
           Gempa Terkini Magnitude 5.0 +
         </h1>
         <div className="w-full overflow-x-auto border border-gray-300 rounded-lg scrollbar-hide">
-          <table className="w-full overflow-hidden text-left border rounded-lg table-auto min-w-max">
+          <table className="w-full overflow-hidden text-left border rounded-lg table-auto">
             <thead>
               <tr>
                 {TABLE_HEAD.map((head) => (
