@@ -48,7 +48,7 @@ const HomePage = () => {
           </div>
 
           <div className="text-lg font-medium text-white">
-            Data bersumber dari BMKG
+            Data Gempa Cuaca By Tofik 
           </div>
         </div>
       </div>
